@@ -63,7 +63,13 @@ for sp in media_soup:
             "title": sp.find("h2").find("a").string.strip().replace(" ", "_").replace("?", "").replace("'", "").replace(":", "_"),
             "episode": sp.find("h3").find("b").string.strip().replace("Episode ", "")
         })
-
+# check if there is a download folder in the parent directory, and if there is a pdf and mp3 folder in the download folder, if not, create it
+if not os.path.exists('./../download'):
+    os.mkdir('./../download')
+if not os.path.exists('./../download/pdf'):
+    os.mkdir('./../download/pdf')
+if not os.path.exists('./../download/mp3'):
+    os.mkdir('./../download/mp3')    
 total_count = len(media_list)
 print("Total Count:", total_count)
 print()
